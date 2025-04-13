@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stylish Form</title>
+  <style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(270deg, #e0c3fc, #8ec5fc, #f9f9f9);
+        background-size: 600% 600%;
+        animation: gradientFlow 15s ease infinite;
+      }
+      
+      @keyframes gradientFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      
+      .form-box {
+        background: rgba(255, 255, 255, 0.9);
+        padding: 35px 40px;
+        border-radius: 20px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        width: 330px;
+        animation: floatIn 1s ease-out, pulseGlow 4s ease-in-out infinite;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        backdrop-filter: blur(8px);
+      }
+      
+      @keyframes floatIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes pulseGlow {
+        0%, 100% {
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        50% {
+          box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+      }
+      
+      h2 {
+        text-align: center;
+        color: #2d3748;
+        margin-bottom: 25px;
+        font-size: 24px;
+      }
+      
+      label {
+        font-size: 14px;
+        color: #4a5568;
+        margin-bottom: 5px;
+        display: block;
+      }
+      
+      input {
+        width: 100%;
+        padding: 10px 12px;
+        margin-bottom: 20px;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        font-size: 15px;
+      }
+      
+      input:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 8px rgba(102, 126, 234, 0.6);
+        outline: none;
+      }
+      
+      button {
+        width: 100%;
+        padding: 12px;
+        background: linear-gradient(to right, #667eea, #764ba2);
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      button:hover {
+        background: linear-gradient(to right, #5a67d8, #6b46c1);
+        transform: scale(1.05);
+        box-shadow: 0 0 10px rgba(90, 103, 216, 0.6);
+      }
+      
+      .error {
+        color: red;
+        text-align: center;
+        font-size: 14px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+      }
+      
+  </style>
+</head>
+<body>
+
+  <div class="form-box">
+    <h2>Register</h2>
+    <form id="myForm">
+      <label>Name:</label>
+      <input type="text" id="name" />
+
+      <label>Email:</label>
+      <input type="email" id="email" />
+
+      <label>Password:</label>
+      <input type="password" id="password" />
+
+      <p id="error" class="error"></p>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const form = document.getElementById('myForm');
+    const error = document.getElementById('error');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (name === '' || email === '' || password === '') {
+        error.textContent = 'Please fill in all fields.';
+      } else if (!email.includes('@')) {
+        error.textContent = 'Enter a valid email.';
+      } else if (password.length < 6) {
+        error.textContent = 'Password must be at least 6 characters.';
+      } else {
+        error.textContent = '';
+        alert('✅ Form submitted successfully!');
+        form.reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
