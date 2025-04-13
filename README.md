@@ -17,7 +17,7 @@ Home: Displays a welcome message and brief introduction.
 About: An introduction to HTML and CSS.
 Photography: A gallery of stunning nature images with a brief description of the importance of nature photography.
 
-# 🚀 Stylish Form with Validation
+# 🚀 Task 2: Stylish Form with Validation
 
 This is a simple and elegant registration form with dynamic styling and validation features. It is built using HTML, CSS, and JavaScript to provide an interactive user experience.
 
